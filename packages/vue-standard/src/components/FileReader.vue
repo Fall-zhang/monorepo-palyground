@@ -4,8 +4,7 @@
   </div>
 </template>
 <script setup>
-import { computed } from 'vue'
-const props = defineProps(['modelValue'])
+defineProps(['modelValue'])
 const emit = defineEmits(['update:modelValue'])
 const changeFile = (ev) => {
   const fileContent = ev.target.files

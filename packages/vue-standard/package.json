@@ -16,9 +16,11 @@
     "@codemirror/theme-one-dark": "^6.0.0",
     "@codemirror/view": "^6.0.2",
     "codemirror": "^6.0.1",
+    "echarts": "^5.3.3",
     "unplugin-element-plus": "^0.4.1",
     "unplugin-vue-components": "^0.21.1",
-    "vue-codemirror": "^6.0.0"
+    "vue-codemirror": "^6.0.0",
+    "vue-router": "4"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.3",
