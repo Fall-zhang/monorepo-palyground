@@ -1,104 +1,77 @@
 <template>
-  <div style="height: 600px;width:600px" id="chart"></div>
+  <div style="height: 600px;width:600px" ref="chart"></div>
 </template>
 <script setup>
 import * as echarts from 'echarts';
+import humanPic from '@/assets/svg/elp.js'
 import { onMounted } from 'vue';
+// console.log(humanPic);
+const chart = ref(null)
 onMounted(() => {
-  const chartDOM = document.getElementById('chart')
-  // chartDOM.style.backgroundColor = 'red'
-  var chart = echarts.init(chartDOM, null, { renderer: 'svg' });
-  chart.setOption(option);
+  var echart = echarts.init(chart.value, null, { renderer: 'svg' });
+  echart.setOption(option);
 })
-// 注：这是我比较喜欢的一个象形柱图示例，通过这个象形主图来了解这个图形，并且做一个 demo 实现象形柱图
-let icon = 'path://M512.584639,219.893708c40.41173,0.258019,73.19961-32.274913,73.199609-72.557634,0-40.025725-32.78788-72.559681-73.199609-72.559681-40.473163,0-73.196538,32.533956-73.196538,72.559681,0,40.089206,32.723375,72.557634,73.196538,72.557634z,m73.330666,16.396499H439.129058c-55.266258,0-91.39098,48.28336-91.390981,94.203594v220.945238c0,42.847553,60.780905,42.847553,60.780905,0V347.144224h11.782872v555.564273c0,59.179548,82.417649,57.316077,84.337434,0V582.569248h15.696162V902.96754c3.391108,60.650871,84.340506,54.817796,84.340506-0.258019V347.144224h9.800631v204.234406c0,42.837314,62.696594,42.837314,62.696594,0V330.433391c0.126962-45.72979-36.116531-94.143184-91.257876-94.143184z'
+// 将数值数组，转换为百分比
 
-const maxData = [
-  { value: 100, symbol: icon, itemStyle: { color: '#1DDBF9' } },
-  { value: 100, symbol: icon, itemStyle: { color: '#ff5983' } }
-]
-const valueData = [
-  { value: 50, symbol: icon, itemStyle: { color: '#1DDBF9' } },
-  { value: 40, symbol: icon, itemStyle: { color: '#ff5983' } }
-]
+var obj = ['2.25%', '41.54%', '32.88%', '16.77%', '5.43%', '0.36%', '0.03%']
 const option = {
-  backgroundColor: '#012248',
   tooltip: {
     trigger: 'axis',
     axisPointer: {
-      type: 'shadow'
+      type: 'none'
     },
-    'formatter': '{b0}: {c0}%'
-  },
-  grid: {
-    containLabel: true,
-    height: '420px',
-    width: '280px',
-    left: 'center',
-    top: 'center',
-  },
-  yAxis: {
-    max: 100,
-    splitLine: {
-      show: false
-    },
-    axisLabel: false
+    formatter: function (params) {
+      let result = params[0].name + ': ' + params[0].value;
+      return result
+    }
   },
   xAxis: {
-    type: 'category',
-    data: ['男', '女'],
-    inverse: true,
+    // show: false,
     axisLine: {
       show: false
     },
-    axisTick: {
+    data: [],
+  },
+  yAxis: {
+    splitLine: {
       show: false
     },
     axisLabel: {
-      fontSize: 20,
-      color: 'white'
-    },
-    axisPointer: {
-      label: {
-        show: true,
-        margin: 50
-      }
+      show: false
     }
   },
+  color: [
+    'rgba(55, 112, 255,0.7)', 'rgba(79, 116, 255,0.7)',
+    'rgba(83, 116, 255,0.7)', 'rgba(85, 125, 255,0.7)',
+    'rgba(101, 191, 255,0.7)', 'rgba(96, 227, 255,0.7)',
+    'rgba(25, 255, 224,0.7)'],
   series: [{
+    name: 'hill',
     type: 'pictorialBar',
-    symbolRepeat: 'fixed',
-    symbolMargin: '6!',
-    position: 'right',
-    offset: [3, 0],
-    formatter: (param) => {
-      return (param.value).toFixed(0) + '%'
-    },
-    textStyle: {
-      fontSize: 20,
-      color: 'white'
-    },
+    barCategoryGap: '0%',
+    // symbol: 'path://M0,10 L10,10 C5.5,10 5.5,5 5,0 C4.5,5 4.5,10 0,10 z',
+    symbol: humanPic,
+    symbolRepeat: "fixed",
+    symbolRepeat: true,
     symbolClip: true,
-    symbolSize: [14, 30],
-    symbolPosition: 'start',
-    symbolBoundingData: 100,
-    data: valueData,
-    z: 10
-  },
-  {
-    type: 'pictorialBar',
-    itemStyle: {
-      opacity: 0.2
+    animation: false,
+    label: {
+      show: true,
+      position: 'top',
+      distance: 10,
+      color: '#000',
+      fontSize: 12,
+      formatter: function (params) {
+        return obj[params.dataIndex];
+      }
     },
-    animationDuration: 0,
-    symbolRepeat: 'fixed',
-    symbolMargin: '6!',
-    symbolSize: [14, 30],
-    symbolBoundingData: 100,
-    symbolPosition: 'start',
-    data: maxData,
-    z: 5
-  }
-  ]
-}
+    emphasis: {
+      itemStyle: {
+        opacity: 1
+      }
+    },
+    data: [2, 30, 25, 16, 10, 6, 1],
+    z: 10
+  }]
+};
 </script>

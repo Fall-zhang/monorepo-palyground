@@ -12,16 +12,7 @@ onMounted(() => {
 })
 // 将数值数组，转换为百分比
 
-var obj = {
-  0: '2.25%',
-  1: '41.54%',
-  2: '32.88%',
-  3: '16.77%',
-  4: '5.43%',
-  5: '0.36%',
-  6: '0.03%',
-};
-
+var obj = ['2.25%', '41.54%', '32.88%', '16.77%', '5.43%', '0.36%', '0.03%']
 const option = {
   tooltip: {
     trigger: 'axis',
@@ -48,17 +39,17 @@ const option = {
       show: false
     }
   },
-  // color: [
-  //   'rgba(55, 112, 255,0.7)', 'rgba(79, 116, 255,0.7)',
-  //   'rgba(83, 116, 255,0.7)', 'rgba(85, 125, 255,0.7)',
-  //   'rgba(101, 191, 255,0.7)', 'rgba(96, 227, 255,0.7)',
-  //   'rgba(25, 255, 224,0.7)'],
+  color: [
+    'rgba(55, 112, 255,0.7)', 'rgba(79, 116, 255,0.7)',
+    'rgba(83, 116, 255,0.7)', 'rgba(85, 125, 255,0.7)',
+    'rgba(101, 191, 255,0.7)', 'rgba(96, 227, 255,0.7)',
+    'rgba(25, 255, 224,0.7)'],
   series: [{
     name: 'hill',
     type: 'pictorialBar',
     barCategoryGap: '-130%',
     symbol: 'path://M0,10 L10,10 C5.5,10 5.5,5 5,0 C4.5,5 4.5,10 0,10 z',
-    animation:false,
+    animation: false,
     label: {
       show: true,
       position: 'top',
@@ -69,22 +60,7 @@ const option = {
         return obj[params.dataIndex];
       }
     },
-    itemStyle: {
-      // color: [
-      //   'rgba(55, 112, 255,0.7)', 'rgba(79, 116, 255,0.7)',
-      //   'rgba(83, 116, 255,0.7)', 'rgba(85, 125, 255,0.7)',
-      //   'rgba(101, 191, 255,0.7)', 'rgba(96, 227, 255,0.7)',
-      //   'rgba(25, 255, 224,0.7)']
-      color: function (params) {
-        let colorList = [
-          'rgba(55, 112, 255,0.7)', 'rgba(79, 116, 255,0.7)',
-          'rgba(83, 116, 255,0.7)', 'rgba(85, 125, 255,0.7)',
-          'rgba(101, 191, 255,0.7)', 'rgba(96, 227, 255,0.7)',
-          'rgba(25, 255, 224,0.7)'
-        ];
-        return colorList[params.dataIndex];
-      }
-    },
+    colorBy: 'data', // 颜色的选取方式，series 表示一个系列用一个颜色， data 表示一个数据用一个颜色
     emphasis: {
       itemStyle: {
         opacity: 1

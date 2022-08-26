@@ -1,16 +1,58 @@
-<script setup >
+<script setup>
 // import CodeEditor from './components/CodeEditor.vue'
 // import FileReader from './components/FileReader.vue'
-import ChartNode from '@/views/echarts/ChartNode.vue'
-// import ChartImage from './components/ChartImage.vue'
-const fileContext = ref('')
-
-const picked = ref('')
+// import ChartNode from '@/views/echarts/ChartNode.vue'
+// import ChartImage from '@/views/echarts/ChartMap.vue'
+// import CustomLayout from '@/views/CustomLayout/index.vue'
+// import interval from './utils/oneInterval'
+// import QuarterCircle from '@/components/Svg/quarter-circle.vue'
+import AntVPageLower from './views/AntVPageLower.vue'
+// const clearFun = interval(() => {
+//   console.log(6669);
+// }, 2000)
+const pageDataX = ref([
+  '德州',
+  '德城区',
+  '陵城区',
+  '禹城市',
+  '乐陵市',
+  '临邑县',
+  '平原县',
+  '夏津县',
+  '武城县',
+  '庆云县',
+  '宁津县',
+  '齐河县'
+])
+const allInfo = reactive({
+  xData: pageDataX.value
+})
+let count = 0
+// setInterval(() => {
+//   allInfo.xData[count] = '来啊'
+//   console.log(pageDataX.value);
+//   count++
+// }, 2000)
+const ant = ref(null)
+const onAdd = () => {
+  ant.value.addNode('rect', '北方')
+}
 </script>
 
 <template>
-
-  <!-- <ChartNode/> -->
+  <div>
+    <!-- <button @click="">展示/隐藏连接功能</button> -->
+    <button @click="onAdd">添加节点</button>
+    <AntVPageLower ref="ant"></AntVPageLower>
+  </div>
+  <!-- <button @click="clearFun">点击暂停</button> -->
+  <!-- <CustomLayout v-model:keep.prr="pageDataX"></CustomLayout> -->
+  <!-- <QuarterCircle type='bottom' color='' width='44px' height='44px' /> -->
+  <!-- <div style="height:600px;background-color:pink;overflow: scroll;" @scroll="onScroll">
+    <div style="height:2000px;background-color:purple" @scroll="onScroll">
+    </div>
+  </div> -->
+  <!-- <ChartImage v-bind="allInfo" /> -->
   <!-- <ChartSvg/> -->
   <!-- <ChartImage/> -->
   <!-- <FileReader v-model='fileContext' style='height: 60px;' />
