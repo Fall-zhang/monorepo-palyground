@@ -7,18 +7,10 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    ChartImage: typeof import('./src/components/ChartImage.vue')['default']
-    ChartNode: typeof import('./src/components/ChartNode.vue')['default']
-    ChartSvg: typeof import('./src/components/ChartSvg.vue')['default']
     CodeEditor: typeof import('./src/components/CodeEditor.vue')['default']
-    Did: typeof import('./src/components/Svg/Did.vue')['default']
-    ElButton: typeof import('element-plus/es')['ElButton']
-    ElTable: typeof import('element-plus/es')['ElTable']
-    ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     FileReader: typeof import('./src/components/FileReader.vue')['default']
     QuarterCircle: typeof import('./src/components/Svg/quarter-circle.vue')['default']
     ReadPictureFile: typeof import('./src/components/ReadPictureFile.vue')['default']
-    ReadPictureFIle: typeof import('./src/components/ReadPictureFIle.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

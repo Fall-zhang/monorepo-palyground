@@ -1,6 +1,6 @@
 import { Shape } from '@antv/x6'
 function timeStamp() {
-  return "" + (new Date()).getTime()
+  return `${new Date().getTime()}`
 }
 export function getBasicRect(label, config) {
   let configObj = {}
@@ -14,17 +14,19 @@ export function getBasicRect(label, config) {
     height: 40,
     label: label,
     zIndex: 2,
-    ports: [{
-      id: 'port1',
-      attrs: {
-        circle: {
-          r: 6,
-          magnet: true,
-          stroke: '#31d0c6',
-          strokeWidth: 2,
-        },
-      },
-    }],
+    ports: [
+      {
+        id: 'port1',
+        attrs: {
+          circle: {
+            r: 6,
+            magnet: true,
+            stroke: '#31d0c6',
+            strokeWidth: 2
+          }
+        }
+      }
+    ],
     ...configObj
   })
 }
@@ -43,8 +45,9 @@ export function getBasicCircle(label, config) {
     ...configObj
   })
 }
-export const getBasicEdge = (from, to) => new Shape.Edge({
-  source: from,
-  target: to,
-  zIndex: 1
-})
+export const getBasicEdge = (from, to) =>
+  new Shape.Edge({
+    source: from,
+    target: to,
+    zIndex: 1
+  })

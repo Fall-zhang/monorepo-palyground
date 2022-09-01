@@ -6,10 +6,17 @@
 // import CustomLayout from '@/views/CustomLayout/index.vue'
 // import interval from './utils/oneInterval'
 // import QuarterCircle from '@/components/Svg/quarter-circle.vue'
-import AntVPageLower from './views/AntVPageLower.vue'
+import { defineAsyncComponent } from 'vue'
+// import AntVPageLower from ''
+import { clientPosition } from './hooks/useMouse'
+import { useUrlChange } from './hooks/useRequest'
+const AntVPageLower = defineAsyncComponent(() => import('./views/AntVPageLower.vue'))
+const { x, y } = clientPosition()
 // const clearFun = interval(() => {
 //   console.log(6669);
 // }, 2000)
+const dataUrl = ref('000')
+const requestData = useUrlChange(dataUrl)
 const pageDataX = ref([
   '德州',
   '德城区',
@@ -24,17 +31,9 @@ const pageDataX = ref([
   '宁津县',
   '齐河县'
 ])
-const allInfo = reactive({
-  xData: pageDataX.value
-})
-let count = 0
-// setInterval(() => {
-//   allInfo.xData[count] = '来啊'
-//   console.log(pageDataX.value);
-//   count++
-// }, 2000)
 const ant = ref(null)
 const onAdd = () => {
+  dataUrl.value += 'udududu'
   ant.value.addNode('rect', '北方')
 }
 </script>
@@ -42,8 +41,9 @@ const onAdd = () => {
 <template>
   <div>
     <!-- <button @click="">展示/隐藏连接功能</button> -->
-    <button @click="onAdd">添加节点</button>
-    <AntVPageLower ref="ant"></AntVPageLower>
+    <button @click='onAdd'>添加节点</button>
+    坐标X {{ x }}坐标Y{{ y }} 请求数据{{ requestData }}
+    <AntVPageLower ref='ant' />
   </div>
   <!-- <button @click="clearFun">点击暂停</button> -->
   <!-- <CustomLayout v-model:keep.prr="pageDataX"></CustomLayout> -->

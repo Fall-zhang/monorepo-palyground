@@ -3,21 +3,18 @@
   <!-- 图形类型：边，节点，节点上的port -->
   <!-- 删除功能：点击图像后，左上角展示一个按钮，添加 -->
   <div>
-    <button @click="onHidePort">展示/隐藏连接功能</button>
-    <div ref="antVContainer" class="graph-container">
-    </div>
+    <button @click='onHidePort'>展示/隐藏连接功能</button>
+    <div ref='antVContainer' class='graph-container' />
   </div>
 </template>
 <script>
-import { Graph, DataUri, Shape } from '@antv/x6';
-import { getBasicRect } from "./element.js"
+import { Graph, DataUri } from '@antv/x6'
+import { getBasicRect } from './element.js'
 // import moment from 'dayjs'
-import graphData from './graphData.js'
+// import graphData from ''
 export default {
   name: '',
-  props: {
-
-  },
+  props: {},
   data() {
     return {
       graph: null,
@@ -31,12 +28,12 @@ export default {
       panning: true,
       mousewheel: {
         enabled: true,
-        modifiers: [],
+        modifiers: []
       },
       connecting: {
-        snap: true,
+        snap: true
       },
-      height: 600,
+      height: 600
     })
     this.graph.fromJSON(graphData)
     this.graph.on('edge:mouseup', ({ edge }) => {
@@ -53,25 +50,26 @@ export default {
     addNode(type, text) {
       let cell = null
       if (type == 'rect') {
-
       } else if (type == 'rect') {
-
       }
       const rect = getBasicRect()
       this.graph.addNode(rect)
     },
     onDownload() {
-      this.graph.toPNG((dataUri) => {
-        // 下载
-        DataUri.downloadDataUri(dataUri, 'chart.png')
-      }, {
-        padding: {
-          top: 20,
-          right: 30,
-          bottom: 40,
-          left: 50,
+      this.graph.toPNG(
+        (dataUri) => {
+          // 下载
+          DataUri.downloadDataUri(dataUri, 'chart.png')
         },
-      })
+        {
+          padding: {
+            top: 20,
+            right: 30,
+            bottom: 40,
+            left: 50
+          }
+        }
+      )
     },
     onHidePort() {
       if (this.showPort) {
@@ -79,15 +77,15 @@ export default {
       }
       console.log(this.graph.toJSON())
       const pageCells = this.graph.toJSON().cells
-      pageCells.forEach(item => {
-        console.log(item);
+      pageCells.forEach((item) => {
+        console.log(item)
         if (item.ports) {
-          item.ports.items.forEach(item2 => {
+          item.ports.items.forEach((item2) => {
             item2.zIndex = -1
           })
         }
       })
-      console.log(pageCells);
+      console.log(pageCells)
       this.graph.fromJSON(pageCells)
     }
   }
