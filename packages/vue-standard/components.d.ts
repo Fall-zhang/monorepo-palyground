@@ -8,6 +8,7 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     CodeEditor: typeof import('./src/components/CodeEditor.vue')['default']
+    CollapseCard: typeof import('./src/components/CollapseCard.vue')['default']
     FileReader: typeof import('./src/components/FileReader.vue')['default']
     QuarterCircle: typeof import('./src/components/Svg/quarter-circle.vue')['default']
     ReadPictureFile: typeof import('./src/components/ReadPictureFile.vue')['default']
