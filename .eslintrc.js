@@ -30,7 +30,8 @@ module.exports = {
     'vue/multiline-html-element-content-newline': 'off',
     'vue/html-indent': ['error', 2],
     'vue/script-indent': ['error', 2],
-    // 'vue/html-quotes': ['error', 'multi'],
+    'vue/html-self-closing': 0,
+    // 'vue/html-quotes': ['error', 'single'],
     'vue/multi-word-component-names': ['off'],
     // js
     quotes: ['error', 'single'], // 单引号
@@ -46,15 +47,15 @@ module.exports = {
     'no-trailing-spaces': 'error', // 一行结束后面不要有空格
     'space-before-function-paren': ['error', 'never'], // 在“ function”定义打开括号之前强制不加空格
     'space-in-parens': ['error', 'never'], // 强制括号左右的不加空格
-    'spaced-comment': ['error', 'always'], //  注释间隔
+    'spaced-comment': ['error', 'always'], // 注释间隔
     'template-tag-spacing': ['error', 'always'], // 在模板标签及其文字之间需要空格
     'no-var': 'error', // 禁止使用 var
     'prefer-destructuring': [
       'error',
       {
         // 优先使用数组和对象解构
-        array: true,
-        object: true
+        array: false,
+        object: false
       },
       {
         enforceForRenamedProperties: false

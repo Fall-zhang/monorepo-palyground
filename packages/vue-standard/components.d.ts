@@ -9,6 +9,13 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     CodeEditor: typeof import('./src/components/CodeEditor.vue')['default']
     CollapseCard: typeof import('./src/components/CollapseCard.vue')['default']
+    ElButton: typeof import('element-plus/es')['ElButton']
+    ElCheckbox: typeof import('element-plus/es')['ElCheckbox']
+    ElColorPicker: typeof import('element-plus/es')['ElColorPicker']
+    ElDialog: typeof import('element-plus/es')['ElDialog']
+    ElSwitch: typeof import('element-plus/es')['ElSwitch']
+    ElTable: typeof import('element-plus/es')['ElTable']
+    ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     FileReader: typeof import('./src/components/FileReader.vue')['default']
     QuarterCircle: typeof import('./src/components/Svg/quarter-circle.vue')['default']
     ReadPictureFile: typeof import('./src/components/ReadPictureFile.vue')['default']

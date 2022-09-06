@@ -17,7 +17,7 @@ export default {
   components: {
 
   },
-  emit: ['hide'],
+  emits: ['hide'],
   data() {
     return {
       menuHide: false,

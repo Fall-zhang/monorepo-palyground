@@ -8,12 +8,11 @@
 // import QuarterCircle from '@/components/Svg/quarter-circle.vue'
 import { defineAsyncComponent } from 'vue'
 // import AntVPageLower from ''
-import Cuu from './views/Cuu.vue'
 import { clientPosition } from './hooks/useMouse'
 import { useUrlChange } from './hooks/useRequest'
 import CollapseCard from './components/CollapseCard.vue'
 const AntVPageLower = defineAsyncComponent(() =>
-  import('./views/AntVPageLower.vue')
+  import('./views/AntFlowChart/AntVPageLower.vue')
 )
 const { x, y } = clientPosition()
 // const clearFun = interval(() => {
@@ -42,12 +41,13 @@ const onAdd = () => {
 }
 const meta = import.meta.env
 // console.log(JSON.parse(meta.VITE_PARSE))
-
 </script>
 
 <template>
   <div>
-    <CollapseCard />
+    <!-- <CollapseCard>
+    </CollapseCard> -->
+    <AntVPageLower />
     <!-- <Cuu /> -->
     <!-- <button @click="">展示/隐藏连接功能</button> -->
     <!-- <button @click='onAdd'>添加节点</button>
@@ -55,6 +55,7 @@ const meta = import.meta.env
     <AntVPageLower ref='ant' /> -->
     <!-- <iframe src="http://localhost:8080" height="800" width="1000" referrerpolicy="unsafe-url" /> -->
   </div>
+
   <!-- <button @click="clearFun">点击暂停</button> -->
   <!-- <CustomLayout v-model:keep.prr="pageDataX"></CustomLayout> -->
   <!-- <QuarterCircle type='bottom' color='' width='44px' height='44px' /> -->

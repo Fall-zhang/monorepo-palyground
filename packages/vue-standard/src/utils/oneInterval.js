@@ -1,13 +1,10 @@
-// 返回值是函数，使用后，interval 暂停
-export default function oneInterval(func, time) {
-  // console.log('ffff')
-  let state = true
+// 返回值是函数，调用后，interval 暂停
+export default function useInterval(func, time) {
   let inprocess = true
-  // console.log(func)
   setTime()
   function setTime() {
-    setTimeout(() => {
-      if (state) {
+    return setTimeout(() => {
+      if (inprocess) {
         func()
         setTime()
         inprocess = false
@@ -15,6 +12,6 @@ export default function oneInterval(func, time) {
     }, time)
   }
   return function() {
-    state = false
+    inprocess = false
   }
 }

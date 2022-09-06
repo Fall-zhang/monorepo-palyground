@@ -1,8 +1,8 @@
 <template>
-    <codemirror v-model="codeContext" placeholder="在这里写入" autofocus :style="{ minHeight: '400px' }"
-      :indent-with-tab="true" :tab-size="2" :extensions="extensions" @ready="log('ready', $event)"
-      @change="log('change', $event)" @focus="log('focus', $event)" @blur="log('blur', $event)" />
-    <el-button @click="onSaveFile" style="margin:20px">保存</el-button>
+  <Codemirror v-model="codeContext" placeholder="在这里写入" autofocus :style="{ minHeight: '400px' }"
+    :indent-with-tab="true" :tab-size="2" :extensions="extensions" @ready="log('ready', $event)"
+    @change="log('change', $event)" @focus="log('focus', $event)" @blur="log('blur', $event)" />
+  <el-button @click="onSaveFile" style="margin:20px">保存</el-button>
 </template>
 
 <script setup>
@@ -32,13 +32,13 @@ const onSaveFile = (ev) => {
   // console.log(ev);
   // console.log(codeContext.value);
   const blob = new Blob([codeContext.value], { type: 'text/javascript' });
-  const url = URL.createObjectURL(blob);;
-  const a = document.createElement("a");
-  a.download = "sunshine";
-  a.href = url;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
+  const url = URL.createObjectURL(blob)
+  const a = document.createElement("a")
+  a.download = "sunshine"
+  a.href = url
+  document.body.appendChild(a)
+  a.click()
+  document.body.removeChild(a)
 }
 </script>
 

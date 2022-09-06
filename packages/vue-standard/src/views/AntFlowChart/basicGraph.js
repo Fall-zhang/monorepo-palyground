@@ -1,7 +1,7 @@
 import { Shape } from '@antv/x6'
-function timeStamp() {
-  return `${new Date().getTime()}`
-}
+// function timeStamp() {
+//   return `${new Date().getTime()}`
+// }
 export function getBasicRect(label, config) {
   let configObj = {}
   if (config && typeof config == 'object') {
@@ -19,7 +19,7 @@ export function getBasicRect(label, config) {
         id: 'port1',
         attrs: {
           circle: {
-            r: 6,
+            r: 4,
             magnet: true,
             stroke: '#31d0c6',
             strokeWidth: 2
