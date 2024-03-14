@@ -8,46 +8,50 @@
 // import QuarterCircle from '@/components/Svg/quarter-circle.vue'
 import { defineAsyncComponent } from 'vue'
 // import AntVPageLower from ''
-import { clientPosition } from './hooks/useMouse'
-import { useUrlChange } from './hooks/useRequest'
-import CollapseCard from './components/CollapseCard.vue'
+// import { clientPosition } from './hooks/useMouse'
+// import { useUrlChange } from './hooks/useRequest'
+// import CollapseCard from './components/CollapseCard.vue'
 const AntVPageLower = defineAsyncComponent(() =>
   import('./views/AntFlowChart/AntVPageLower.vue')
 )
-const { x, y } = clientPosition()
+// const { x, y } = clientPosition()
 // const clearFun = interval(() => {
 //   console.log(6669);
 // }, 2000)
-const dataUrl = ref('000')
-const requestData = useUrlChange(dataUrl)
-const pageDataX = ref([
-  '德州',
-  '德城区',
-  '陵城区',
-  '禹城市',
-  '乐陵市',
-  '临邑县',
-  '平原县',
-  '夏津县',
-  '武城县',
-  '庆云县',
-  '宁津县',
-  '齐河县'
-])
-const ant = ref(null)
-const onAdd = () => {
-  dataUrl.value += 'udududu'
-  ant.value.addNode('rect', '北方')
-}
-const meta = import.meta.env
+// const dataUrl = ref('000')
+// const requestData = useUrlChange(dataUrl)
+// const pageDataX = ref([
+//   '德州',
+//   '德城区',
+//   '陵城区',
+//   '禹城市',
+//   '乐陵市',
+//   '临邑县',
+//   '平原县',
+//   '夏津县',
+//   '武城县',
+//   '庆云县',
+//   '宁津县',
+//   '齐河县'
+// ])
+// const ant = ref(null)
+// const onAdd = () => {
+//   dataUrl.value += 'udududu'
+//   ant.value.addNode('rect', '北方')
+// }
+// const meta = import.meta.env
 // console.log(JSON.parse(meta.VITE_PARSE))
 </script>
 
 <template>
   <div>
+    <div class="mainPaint">
+      <p>一些内容需要动画</p>
+      <p>一些内容需要动画</p>
+    </div>
     <!-- <CollapseCard>
     </CollapseCard> -->
-    <AntVPageLower />
+    <!-- <AntVPageLower /> -->
     <!-- <Cuu /> -->
     <!-- <button @click="">展示/隐藏连接功能</button> -->
     <!-- <button @click='onAdd'>添加节点</button>
@@ -82,7 +86,31 @@ const meta = import.meta.env
   </el-table> -->
 </template>
 
-<style>
+<style lang="less">
+.mainPaint {
+  position: absolute;
+  height: 20px;
+  font: 16px;
+  overflow: hidden;
+  animation: leanup 3s infinite;
+
+  p {
+    margin: 0;
+    height: 20px;
+  }
+
+}
+
+@keyframes leanup {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(0, -80px);
+  }
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

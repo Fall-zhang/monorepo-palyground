@@ -1,3 +1,15 @@
+const portConifg = {
+  attrs: {
+    circle: {
+      magnet: true,
+      r: 6
+    }
+  },
+  position: {
+    name: 'top',
+    args: {}
+  }
+}
 export default {
   // 节点
   nodes: [
@@ -16,7 +28,70 @@ export default {
       width: 80, // Number，可选，节点大小的 width 值
       height: 40, // Number，可选，节点大小的 height 值
       label: 'world', // String，节点标签
-      ports: [{ id: 'port1' }, { id: 'port2' }, { id: 'port3' }]
+      ports: [
+        { id: 'port1', attrs: { circle: { r: 6 } } },
+        { id: 'port2' },
+        { id: 'port3' }
+      ]
+    },
+    {
+      id: 'node3', // String，节点的唯一标识
+      x: 500, // Number，必选，节点位置的 x 值
+      y: 500, // Number，必选，节点位置的 y 值
+      shape: 'circle',
+      width: 80, // Number，可选，节点大小的 width 值
+      height: 80, // Number，可选，节点大小的 height 值
+      label: '我我我我', // String，节点标签
+      ports: {
+        groups: {
+          top: {
+            attrs: portConifg.attrs,
+            position: {
+              name: 'top',
+              args: {}
+            }
+          },
+          right: {
+            attrs: portConifg.attrs,
+            position: {
+              name: 'right',
+              args: {}
+            }
+          },
+          bottom: {
+            attrs: portConifg.attrs,
+            position: {
+              name: 'bottom',
+              args: {}
+            }
+          },
+          left: {
+            attrs: portConifg.attrs,
+            position: {
+              name: 'left',
+              args: {}
+            }
+          }
+        },
+        items: [
+          { id: 'left-top-2', group: 'top' },
+          { id: 'top-1', group: 'top' },
+          { id: 'top-2', group: 'top' },
+          { id: 'right-top-1', group: 'top' },
+          { id: 'right-top-2', group: 'right' },
+          { id: 'right-1', group: 'right' },
+          { id: 'right-2', group: 'right' },
+          { id: 'right-bottom-1', group: 'right' },
+          { id: 'right-bottom-2', group: 'bottom' },
+          { id: 'bottom-1', group: 'bottom' },
+          { id: 'bottom-2', group: 'bottom' },
+          { id: 'left-bottom-1', group: 'bottom' },
+          { id: 'left-bottom-2', group: 'left' },
+          { id: 'left-1', group: 'left' },
+          { id: 'left-2', group: 'left' },
+          { id: 'left-top-1', group: 'left' }
+        ]
+      }
     }
   ],
   // 边

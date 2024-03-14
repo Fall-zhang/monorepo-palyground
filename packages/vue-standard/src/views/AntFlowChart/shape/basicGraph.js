@@ -1,7 +1,4 @@
 import { Shape } from '@antv/x6'
-// function timeStamp() {
-//   return `${new Date().getTime()}`
-// }
 export function getBasicRect(label, config) {
   let configObj = {}
   if (config && typeof config == 'object') {
@@ -40,7 +37,7 @@ export function getBasicCircle(label, config) {
     y: 40,
     width: 100,
     height: 40,
-    label: label,
+    label: label || '',
     zIndex: 2,
     ...configObj
   })
